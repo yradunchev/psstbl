@@ -17,7 +17,7 @@ Dependencies:
 Documentation:
 
 -g TableName : Generate password table named NameTable.
-				   If there is existing table with that name it will be preseved.
+If there is existing table with that name it will be preseved.
 
 -p	TableName : Print password table named NameTable.
 
