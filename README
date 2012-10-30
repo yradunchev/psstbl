@@ -16,10 +16,10 @@ Dependencies:
 -------------------------------------------------------------------------------
 Documentation:
 
--g TableName : Generate password table named NameTable.
+-g TableName : Generate password table named TableName.
 If there is existing table with that name it will be preseved.
 
--p TableName : Print password table named NameTable.
+-p TableName : Print password table named TableName.
 
 -l	: List all existing password tables. 
  
