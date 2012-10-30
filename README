@@ -1,0 +1,30 @@
+Project: Password Table Generator
+Version 1.0
+Release date: 2012-10-31
+State: stable
+
+-------------------------------------------------------------------------------
+Description:
+
+Generate, store and print stored password tables from CLI.
+
+-------------------------------------------------------------------------------
+Dependencies:
+
+* binutils
+
+-------------------------------------------------------------------------------
+Documentation:
+
+-g TableName : Generate password table named NameTable.
+				   If there is existing table with that name it will be preseved.
+
+-p	TableName : Print password table named NameTable.
+
+-l				 : List all existing password tables. 
+ 
+-------------------------------------------------------------------------------
+Installation instructions
+
+Put this script somewhere in your $PATH (~/bin is a good location).
+Make it executable with chmod.
