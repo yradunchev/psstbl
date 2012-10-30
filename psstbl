@@ -1,33 +1,39 @@
 #!/bin/bash
 
+im=$( basename ${0} )
+
 #check for strings exit if missing
-command -v strings &>/dev/null || { echo "pastab requires binutils to be installed but it's not. Aborting." >&2; exit 1; }
+command -v strings &>/dev/null || { echo "${im} requires binutils to be installed but it's not. Aborting." >&2; exit 1; }
 
 while [[ ${1} = * ]]; do
   case "${1}" in
     -g|--generate)
       #check for directory .pastab in user home directory, create one if it's not exists
-      [ -d ${HOME}/.pastab ] || mkdir ${HOME}/.pastab
+      [ -d ${HOME}/.${im} ] || mkdir ${HOME}/.${im}
       #check if key file with that name exists - if so exit doing nothing
-      [ -e ${HOME}/.pastab/${2}.key ] && exit 3
-      dd status=noxfer if=/dev/urandom of=${HOME}/.pastab/${2}.key bs=1024 count=10 > /dev/null 2>&1
+      [ -e ${HOME}/.${im}/${2}.key ] && exit 3
+      dd status=noxfer if=/dev/urandom of=${HOME}/.${im}/${2}.key bs=1024 count=10 > /dev/null 2>&1
       shift 2
       exit 0
       ;;
     -p|--print)
       #check if key file exists if not exit doing nothing
-      [ ! -e ${HOME}/.pastab/${2}.key ] && exit 4
+      [ ! -e ${HOME}/.${im}/${2}.key ] && exit 4
       alph=$(echo {a..z} | sed 's/ //g')
       line=$(for i in $(seq 26); do echo -n '-'; done)
       echo -e "NE|${alph}|NW\n--+${line}+--"
-      key=$(cat ${HOME}/.pastab/${2}.key | strings | tr -d '* \t\n')
+      key=$(cat ${HOME}/.${im}/${2}.key | strings | tr -d '* \t\n')
       echo ${key:0:260} | awk 'BEGIN{n=1;nn=0}{while(substr($0,n,26)){print nn " |" substr($0,n,26) "| " nn;n+=26;nn+=1}}'
       echo -e "--+${line}+--\nSE|${alph}|SW"
       shift 2
       exit 0
       ;;
+    -l|--list)
+		ls ${HOME}/.${im}
+		exit 0
+		;;
     *)
-      echo "Usage: $0 [-p|--print || -g|--generate] passtab_name"
+      echo "Usage: ${im} [-p|--print || -g|--generate ||-l|--list] passtab_name"
       exit 5
   esac
 done
