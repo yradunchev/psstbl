@@ -25,5 +25,4 @@ Documentation:
 -------------------------------------------------------------------------------
 Installation instructions
 
-Put this script somewhere in your $PATH (~/bin is a good location).
-Make it executable with chmod.
+Put this script somewhere in your $PATH (~/bin is a good location). Make it executable with chmod.
