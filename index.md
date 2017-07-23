@@ -14,9 +14,9 @@ binutils
 
 ## Documentation:
 
--g TableName : Generate password table TableName.
--p TableName : Print password table TableName.
--l : List all existing password tables.
+-g TableName : Generate password table TableName.   
+-p TableName : Print password table TableName.   
+-l : List all existing password tables.   
 
 ## Installation:
 
