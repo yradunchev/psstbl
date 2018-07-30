@@ -21,11 +21,11 @@ while [[ ${1} = * ]]; do
       [ ! -e "${HOME}/.${im}/${2}.key" ] && { echo "Table ${2} does not exist!"; exit 4; }
       alph=$(echo {a..z} | sed 's/ //g')
       line=$(for ((n=0;n<27;n++)); do echo -n '-'; done)
-      echo -e "\n--- ${2} ---\n"
-      echo -e "NE|${alph}|NW\n--+${line}+--"
+      echo -e "\\n--- ${2} ---\\n"
+      echo -e "NE|${alph}|NW\\n--+${line}+--"
       key=$(strings < "${HOME}/.${im}/${2}.key" | tr -d '* \t\n')
       echo "${key:0:260}" | awk 'BEGIN{n=1;nn=0}{while(substr($0,n,26)){print nn " |" substr($0,n,26) "| " nn;n+=26;nn+=1}}'
-      echo -e "--+${line}+--\nSE|${alph}|SW\n"
+      echo -e "--+${line}+--\\nSE|${alph}|SW\\n"
       shift 2
       exit 0
       ;;
